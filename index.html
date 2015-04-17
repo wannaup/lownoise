@@ -26,11 +26,11 @@
         </div>
       </div>
 
-      <div class="col-md-3" id="buttonsDiv" ng-controller="MyselfController as c">
-        <h3>You are currently: <span ng-class="{'label label-danger': c.currentStatus=='SILENCE', 'label label-success': c.currentStatus=='NOISE'}">{{c.currentStatus}}</span></h3>
+      <div class="col-md-3" id="buttonsDiv" ng-controller="MyselfController">
+        <h3>You are currently: <span ng-class="{'label label-danger': user.status=='SILENCE', 'label label-success': user.status=='NOISE'}">{{user.status}}</span></h3>
 
-        <button class="btn btn-success" id="btn-noise" ng-click="c.green()" ng-disabled="c.currentStatus=='NOISE'">Noise</button>
-        <button class="btn btn-danger" id="btn-silence" ng-click="c.red()" ng-disabled="c.currentStatus=='SILENCE'">Silence</button>
+        <button class="btn btn-success" id="btn-noise" ng-click="green()" ng-disabled="user.status=='NOISE'">Noise</button>
+        <button class="btn btn-danger" id="btn-silence" ng-click="red()" ng-disabled="user.status=='SILENCE'">Silence</button>
       </div>
     </div>
   </div>
