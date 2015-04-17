@@ -22,9 +22,9 @@
   <script src="theapp.js"></script>
 
 </head>
-<body>
-  <div class="container" ng-app="lownoise" ng-class="{'container-with-border': loggedin == true}">
-      <div class="row" ng-controller="MainController">
+<body ng-app="lownoise">
+  <div class="container" ng-controller="MainController" ng-class="{'container-with-border': loggedin}">
+      <div class="row">
         <div class="col-xs-12 col-xs-6 col-xs-offset-3 col-md-4 col-md-offset-4 text-center" id="loginform" ng-if="!loggedin">
           <form ng-submit="login()">
           <div class="form-group">
@@ -41,7 +41,7 @@
             <div class="media">
               <div class="media-left media-middle">
                 <a href="#">
-                  <div class="user-color img-circle" style="background-color:{{user.color}}"></div>
+                  <div class="user-color img-circle" style="background-color:{{user.color}}">{{user.name | limitTo: 1}}</div>
                 </a>
               </div>
               <div class="media-body">
@@ -58,7 +58,7 @@
       <div class="col-md-3 text-center" id="user-sidebar" ng-controller="MyselfController" ng-if="loggedin" ng-cloak>
         <div id="userinfo">
         <div class="user-color-container">
-        <div class="user-color img-circle" style="background-color:{{user.color}}"></div>
+        <div class="user-color img-circle" style="background-color:{{user.color}}">{{user.name | limitTo: 1}}</div>
       </div>
         <h2>{{user.name}}</h2>
         <div ng-class="{'color-silence': user.status=='SILENCE', 'color-noise': user.status=='NOISE'}">
