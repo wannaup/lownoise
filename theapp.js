@@ -1,4 +1,6 @@
+
 (function() {
+    var FIREURL = "https://lownoise.firebaseio.com/"
     function getMessageId(snapshot) {
         return snapshot.key().replace(/[^a-z0-9\-\_]/gi, '');
     }
@@ -10,10 +12,10 @@
         var auser = {name: name, status: "SILENCE"};
         $scope.user = undefined;
         // Get a reference to the presence data in Firebase.
-        var userListRef = new Firebase("https://sweltering-heat-795.firebaseio.com/users/");
+        var userListRef = new Firebase(FIREURL + "users/");
 
         // Get a reference to my own presence status.
-        var connectedRef = new Firebase("https://sweltering-heat-795.firebaseio.com/.info/connected");
+        var connectedRef = new Firebase(FIREURL + ".info/connected");
         $scope.setUserStatus = function(status) {
             // Set our status in the list of online users.
             $scope.user.status= status;
@@ -48,7 +50,7 @@
 
     app.controller("UserController", function($scope, $firebaseArray) {
         //users list
-        var userListRef = new Firebase("https://sweltering-heat-795.firebaseio.com/users/");
+        var userListRef = new Firebase(FIREURL + "users/");
         $scope.users = $firebaseArray(userListRef);
         
     });
