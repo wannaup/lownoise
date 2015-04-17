@@ -22,8 +22,8 @@
 
     app.controller("MyselfController", function($scope, $rootScope, $firebaseArray, $firebaseObject) {
         var name = $rootScope.username;
-        var auser = {name: name, status: "SILENCE", message: 'Online'};
-        $scope.user = undefined;
+        var auser = {name: name, status: "SILENCE", message: 'Hello'};
+        $scope.user = auser;
         // Get a reference to the presence data in Firebase.
         var userListRef = new Firebase(FIREURL + "users/");
 

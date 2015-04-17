@@ -1,3 +1,7 @@
+.ng-cloak{
+	display:none;
+}
+
 .container-with-border{
 	border:1px solid #ccc;
 	overflow:hidden;
@@ -21,6 +25,10 @@
   	height: 100%;
 }
 
+#userinfo{
+	-webkit-animation: bounceInDown 1s;
+}
+
 #user-sidebar .user-color-container{
 	width: 50%;
     margin: 0 auto;
@@ -32,7 +40,7 @@
 	width: 85px;
 	display: inline-block;
   	clear:both;
-}
+ }
 
 #user-sidebar .status-icon{
 	font-size:20px;
@@ -53,9 +61,11 @@
 .btn{
 	border-radius: 0;
 }
+
 #user-sidebar .user-buttons .btn{
 	margin-bottom:10px;
 	width:60%;
+	-webkit-animation: bounceInUp 1s;
 }
 
 .color-silence{
@@ -81,8 +91,8 @@
 }
 
 .user-entry .user-color{
-	  height: 60px;
-  		width: 60px;
+	height: 60px;
+  	width: 60px;
 }
 
 .user-entry .user-text .media-heading{

@@ -23,7 +23,7 @@
 
 </head>
 <body>
-  <div class="container text-center" ng-app="lownoise" ng-class="{'container-with-border': loggedin == true}">
+  <div class="container" ng-app="lownoise" ng-class="{'container-with-border': loggedin == true}">
       <div class="row" ng-controller="MainController">
         <div class="col-xs-12 col-xs-6 col-xs-offset-3 col-md-4 col-md-offset-4 text-center" id="loginform" ng-if="!loggedin">
           <form ng-submit="login()">
@@ -34,7 +34,7 @@
 </form>
         </div>
 
-        <div class="col-md-9" ng-controller="UserController" ng-if="loggedin" id="users-list">
+        <div class="col-md-9" ng-controller="UserController" ng-if="loggedin" id="users-list" ng-cloak>
           <div class="row user-entry" ng-repeat="user in users">
            <!--  <div class="user-color img-circle" style="background-color:{{user.color}}"></div> -->
            <div class="user-text">
@@ -55,7 +55,8 @@
           </div>
         </div>
       </div>
-      <div class="col-md-3 text-center" id="user-sidebar" ng-controller="MyselfController" ng-if="loggedin">
+      <div class="col-md-3 text-center" id="user-sidebar" ng-controller="MyselfController" ng-if="loggedin" ng-cloak>
+        <div id="userinfo">
         <div class="user-color-container">
         <div class="user-color img-circle" style="background-color:{{user.color}}"></div>
       </div>
@@ -65,6 +66,7 @@
           {{user.status}}
         </div>
         {{user.message}}
+        </div>
         <div class="row">
           <div class="col-xs-12" style="padding-top:10px">
             <div class="user-buttons">
@@ -74,6 +76,7 @@
           </div>
         </div>
       </div>
+      
     </div>
   </div>
 
