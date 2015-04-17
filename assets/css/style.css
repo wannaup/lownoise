@@ -1,0 +1,139 @@
+.container-with-border{
+	border:1px solid #ccc;
+	overflow:hidden;
+}
+
+#loginform{
+	box-shadow: 1px 1px 2px #ccc;
+	margin-top:35%;
+	padding:40px 20px;
+	background-image: url('../img/logo.jpg');
+}
+#loginform img{
+	max-width: 80%;
+}
+#users-list{
+	padding:10px 40px;
+}
+
+#user-sidebar{
+	border-left: 1px solid #ccc;
+  	height: 100%;
+}
+
+#user-sidebar .user-color-container{
+	width: 50%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+#user-sidebar .user-color{
+	height: 85px;
+	width: 85px;
+	display: inline-block;
+  	clear:both;
+}
+
+#user-sidebar .status-icon{
+	font-size:20px;
+}
+
+#user-sidebar .color-silence-add{
+	-webkit-animation: rubberBand .8s;
+}
+
+#user-sidebar .color-noise-add{
+	-webkit-animation: rubberBand .8s;
+}
+
+#user-sidebar .user-buttons{
+	padding-top:20px;
+}
+
+.btn{
+	border-radius: 0;
+}
+#user-sidebar .user-buttons .btn{
+	margin-bottom:10px;
+	width:60%;
+}
+
+.color-silence{
+	color: #f45656;
+}
+
+.color-noise{
+	color: #76d397;
+}
+
+.user-entry .color-silence-add{
+	-webkit-animation: rubberBand .8s;
+}
+
+.user-entry .color-noise-add{
+	-webkit-animation: rubberBand .8s;
+}
+
+.user-entry{
+	padding: 15px 5px;
+	border-bottom: 1px solid #ccc;
+	position: relative;
+}
+
+.user-entry .user-color{
+	  height: 60px;
+  		width: 60px;
+}
+
+.user-entry .user-text .media-heading{
+	margin-top:10px;
+}
+
+.user-entry .status-icon{
+	position: absolute;
+	font-size: 30px;
+	top:40%;
+	right:0;
+	width: 10%;
+	height:100%;
+}
+
+.user-entry.ng-enter {
+	animation: bounceInUp 1s;
+  	-webkit-animation: bounceInUp 1s;
+}
+
+.user-entry.ng-leave {
+	animation: fadeOutLeft 1s;
+  -webkit-animation: fadeOutLeft 1s;
+}
+
+.btn:hover{
+	color:white;
+}
+
+.btn-silence{
+	color:white;
+	background-color: #f45656;
+}
+
+.btn-silence:disabled{
+	color:#f45656;
+	background-color: white;
+	border:2px solid #f45656;
+}
+
+.btn-noise{
+	color:white;
+	background-color: #76d397;
+}
+
+.btn-noise:disabled{
+	color:#76d397;
+	background-color: white;
+	border:2px solid #76d397;
+}
+
+.user-buttons{
+	border-top: 1px solid #ccc;
+}

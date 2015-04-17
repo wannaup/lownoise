@@ -1,22 +1,35 @@
 
 (function() {
     var FIREURL = "https://lownoise.firebaseio.com/"
+    var colors = ['#3f7cac','#2ebaac','#d77764','#6de06f','#c89bf7'];
+
     function getMessageId(snapshot) {
         return snapshot.key().replace(/[^a-z0-9\-\_]/gi, '');
     }
-    var app = angular.module("lownoise", ["firebase"]);
+    var app = angular.module("lownoise", ["firebase", "ngAnimate"]);
 
-    app.controller("MyselfController", function($scope, $firebaseArray, $firebaseObject) {
-        var name = prompt("Your name?", "Guest");
+    app.controller("MainController", function($scope, $rootScope){
+        $scope.loggedin = false;
+        $scope.user={username : undefined};
+        $scope.login = function(){
+            //do logn
+            console.log($scope.user.username);
+            $rootScope.username = $scope.user.username;
+            $scope.loggedin = true;
+        };
+        
+    });
 
-        var auser = {name: name, status: "SILENCE"};
+    app.controller("MyselfController", function($scope, $rootScope, $firebaseArray, $firebaseObject) {
+        var name = $rootScope.username;
+        var auser = {name: name, status: "SILENCE", message: 'Online'};
         $scope.user = undefined;
         // Get a reference to the presence data in Firebase.
         var userListRef = new Firebase(FIREURL + "users/");
 
         // Get a reference to my own presence status.
         var connectedRef = new Firebase(FIREURL + ".info/connected");
-        $scope.setUserStatus = function(status) {
+        function setUserStatus(status) {
             // Set our status in the list of online users.
             $scope.user.status= status;
             $scope.user.$save();
@@ -28,8 +41,15 @@
                 // Set our initial online status.
                 console.log(isOnline.val());
                 // Generate a reference to a new location for my user with push.
-                $firebaseArray(userListRef).$add(auser).then(function(objRef){
-                    $scope.user = $firebaseObject(objRef);
+                var userarr = $firebaseArray(userListRef);
+                userarr.$add(auser).then(function(objRef){
+                    var theuser = $firebaseObject(objRef);
+                    theuser.$loaded(function(){
+                      theuser.color = colors[userarr.$indexFor(objRef.key())];
+                      theuser.$save();
+                      $scope.user = theuser;  
+                    });
+                    
                     objRef.onDisconnect().remove();
                 });
             }
@@ -40,10 +60,10 @@
 
         });
         $scope.green = function(){
-        	$scope.setUserStatus("NOISE");
+        	setUserStatus("NOISE");
         };
         $scope.red = function(){
-        	$scope.setUserStatus("SILENCE");
+        	setUserStatus("SILENCE");
         };
 
     });
@@ -56,3 +76,4 @@
     });
 
 })();
+
