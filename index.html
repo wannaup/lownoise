@@ -1,11 +1,13 @@
 <html>
 <head>
+  <title>LowNoise - Don't get disturbed by chatty collaborators</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
   <meta charset="utf-8">
   <!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/animate.css">
   <link rel="stylesheet" href="assets/css/style.css">
@@ -52,6 +54,9 @@
           </div>
           <div class="status-icon">
             <span class="icon-pacman" ng-class="{'color-silence': user.status=='SILENCE', 'color-noise': user.status=='NOISE'}"></span>
+          </div>
+          <div class="notify-button">
+            <a ng-click="listenUser(user)"><i class="fa" ng-class="listenToUsers.indexOf(user.$id) > -1 ? 'fa-bell' : 'fa-bell-o'"></i></a>
           </div>
         </div>
       </div>
